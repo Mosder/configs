@@ -10,6 +10,7 @@ alias protontricks='flatpak run com.github.Matoking.protontricks'
 alias aghvpn='sudo openvpn ~/Downloads/VPN-AGH.2025.ovpn'
 alias lobbycode='clip ~/.local/share/Steam/steamapps/common/PAYDAY\ 2/lobby_code'
 alias livesplit='~/livesplit/LiveSplitOne'
+alias grepfind='sudo find / | grep'
 
 vmplayer() {
 	sudo systemctl start vmware-networks.service
