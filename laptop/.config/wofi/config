@@ -1,0 +1,9 @@
+show=run
+width=20%
+height=25%
+prompt=
+term=konsole
+hide_scroll=true
+matching=fuzzy
+insensitive=true
+use_search_box=false

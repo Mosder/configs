@@ -1,0 +1,42 @@
+window {
+	background-color: transparent;
+}
+
+#input {
+	border: 2px solid #AAB1BE;
+	background-color: #4B5263;
+	color: #FFFFFF;
+	border-radius: 5px 5px 0 0;
+	caret-color: #BBB;
+}
+
+#inner-box {
+	background-color: transparent;
+}
+
+#outer-box {
+	background-color: #282C34;
+	border-radius: 5px;
+}
+
+#scroll {
+	border: 2px solid #df00ff;
+	border-radius: 0 0 5px 5px;
+	padding: 2px;
+}
+
+#text {
+	margin: 5px;
+	color: #E2C184;
+}
+
+#text:selected {
+	color: white;
+}
+
+#entry:selected {
+	background-color: transparent;
+	outline: none;
+	border: 1px dashed #60AEED;
+	border-radius: 5px;
+}
