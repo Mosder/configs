@@ -7,3 +7,4 @@ hide_scroll=true
 matching=fuzzy
 insensitive=true
 use_search_box=false
+allow_images=true
