@@ -9,6 +9,7 @@ alias hyprcfg='vim ~/.config/hypr/hyprland.conf'
 alias die='shutdown -h 0'
 alias aghvpn='sudo openvpn ~/Downloads/VPN-AGH.2025.ovpn'
 alias grepfind='sudo find / | grep'
+alias rfm='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 restart() {
     konsole &
