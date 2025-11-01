@@ -56,6 +56,7 @@ tooltip label {
 #battery,
 #cpu,
 #memory,
+#backlight,
 #network,
 #wireplumber {
     padding: 0 10px;
@@ -119,6 +120,11 @@ label:focus {
 
 #memory {
     background-color: #720f4f;
+}
+
+#backlight {
+    background-color: #b0d1d1;
+    color: #000000;
 }
 
 #network {
