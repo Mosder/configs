@@ -39,7 +39,6 @@ wezterm.on(
 	end
 )
 
-
 -- Window
 cfg.window_background_opacity = 0.9
 cfg.window_frame = {
@@ -104,7 +103,7 @@ cfg.keys = {
 	{
 		mods = 'CTRL|SHIFT',
 		key = 'c',
-		action = act.CopyTo "Clipboard"
+		action = act.CopyTo 'Clipboard'
 	},
 	-- Decrease font size
 	{
@@ -146,12 +145,50 @@ cfg.keys = {
 		key = 'p',
 		action = act.ResetFontSize
 	},
-	-- Reset terminal
+	-- Search
 	{
 		mods = 'CTRL',
-		key = 'r',
-		action = act.ResetTerminal
+		key = 'f',
+		action = act.Search('CurrentSelectionOrEmptyString')
 	},
+	-- Debug
+	{
+		mods = 'CTRL',
+		key = 'd',
+		action = act.ShowDebugOverlay
+	},
+	-- New tab
+	{
+		mods = 'CTRL',
+		key = 't',
+		action = act.SpawnTab 'CurrentPaneDomain'
+	}
 }
+-- Change tabs
+for i = 0, 9 do
+	table.insert(cfg.keys, {
+		mods = 'CTRL',
+		key = tostring(i),
+		action = act.ActivateTab(i - 1)
+	})
+end
+-- Move tabs (no support for -1, so a script instead)
+special_characters = {'!', '@', '#', '$', '%', '^', '&', '*', '('}
+for i = 1, 9 do
+	table.insert(cfg.keys, {
+		mods = 'CTRL|SHIFT',
+		key = special_characters[i],
+		action = act.MoveTab(i - 1)
+	})
+end
+wezterm.on("move-tab-to-last-spot", function(window, pane)
+	tabs = window:mux_window():tabs()
+	window:perform_action(act.MoveTab(#tabs - 1), pane)
+end)
+table.insert(cfg.keys, {
+	mods = 'CTRL|SHIFT',
+	key = ')',
+	action = act.EmitEvent 'move-tab-to-last-spot'
+})
 
 return cfg
