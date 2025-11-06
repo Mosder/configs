@@ -7,14 +7,12 @@ PS1='\[\e[0;35m\][\u@\h \W]\$\[\e[0m\] '
 alias bashcfg='vim ~/.bashrc'
 alias hyprcfg='vim ~/.config/hypr/hyprland.conf'
 alias die='shutdown -h 0'
-alias aghvpn='sudo openvpn ~/Downloads/VPN-AGH.2025.ovpn'
 alias grepfind='sudo find / | grep'
 alias rfm='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 restart() {
-    konsole &
-	disown
-    exit
+	wezterm &
+	exit
 }
 clip() {
 	wl-copy < "$@"
@@ -39,3 +37,5 @@ resizeVideo() {
 		rm ffmpeg2pass-0.log ffmpeg2pass-0.log.mbtree
 	fi
 }
+
+export PATH="$PATH:/home/mosder/.bin"
