@@ -33,11 +33,12 @@ cfg.show_tab_index_in_tab_bar = false
 wezterm.on(
 	'format-tab-title',
 	function(tab, tabs, panes, config, hover, max_width)
-		title = tab.active_pane.title
-		part_to_remove = "mosder@archtop:"
+		local title = tab.active_pane.title
+		local part_to_remove = "mosder@archtop:"
 		return string.gsub(title, part_to_remove, "")
 	end
 )
+
 
 -- Window
 cfg.window_background_opacity = 0.9
@@ -173,7 +174,7 @@ for i = 0, 9 do
 	})
 end
 -- Move tabs (no support for -1, so a script instead)
-special_characters = {'!', '@', '#', '$', '%', '^', '&', '*', '('}
+local special_characters = {'!', '@', '#', '$', '%', '^', '&', '*', '('}
 for i = 1, 9 do
 	table.insert(cfg.keys, {
 		mods = 'CTRL|SHIFT',
@@ -182,7 +183,7 @@ for i = 1, 9 do
 	})
 end
 wezterm.on("move-tab-to-last-spot", function(window, pane)
-	tabs = window:mux_window():tabs()
+	local tabs = window:mux_window():tabs()
 	window:perform_action(act.MoveTab(#tabs - 1), pane)
 end)
 table.insert(cfg.keys, {
