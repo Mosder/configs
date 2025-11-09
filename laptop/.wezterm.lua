@@ -41,7 +41,7 @@ wezterm.on(
 
 
 -- Window
-cfg.window_background_opacity = 0.9
+cfg.window_background_opacity = 0.95
 cfg.window_frame = {
 	-- Would love to set alpha of both of these to 0.9, but it incorrectly applies
 	-- to the area above the tabs themselves, so it's 1 for now
