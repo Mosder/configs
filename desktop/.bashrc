@@ -4,6 +4,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='\[\e[0;35m\][\u@\h \W]\$\[\e[0m\] '
 
+alias vim='nvim'
 alias bashcfg='vim ~/.bashrc'
 alias die='shutdown -h 0'
 alias protontricks='flatpak run com.github.Matoking.protontricks'
