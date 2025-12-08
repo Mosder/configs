@@ -6,24 +6,21 @@ PS1='\[\e[0;35m\][\u@\h \W]\$\[\e[0m\] '
 
 alias vim='nvim'
 alias bashcfg='vim ~/.bashrc'
+alias hyprcfg='vim ~/.config/hypr/hyprland.conf'
 alias die='shutdown -h 0'
-alias protontricks='flatpak run com.github.Matoking.protontricks'
-alias aghvpn='sudo openvpn ~/Downloads/VPN-AGH.2025.ovpn'
-alias lobbycode='clip ~/.local/share/Steam/steamapps/common/PAYDAY\ 2/lobby_code'
-alias livesplit='~/livesplit/LiveSplitOne'
 alias grepfind='sudo find / | grep'
+alias rfm='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias lobbycode='clip ~/.local/share/Steam/steamapps/common/PAYDAY\ 2/lobby_code'
 
-vmplayer() {
-	sudo systemctl start vmware-networks.service
-	command vmplayer
-}	
+# yaptide
+alias yap='~/yap/start.sh'
+
 restart() {
-    konsole &
-    disown
-    exit
+	wezterm &
+	exit
 }
 clip() {
-	xclip -sel clip "$@"
+	wl-copy < "$@"
 }
 open(){
 	for file in "$@"
@@ -47,12 +44,12 @@ resizeVideo() {
 }
 music() {
 	if [[ $# == 0 ]]; then
-		command find /hdd/mosder/music -printf "\"%p\"\n" | grep .mp3 | xargs vlc
+		command find $HOME/music -printf "\"%p\"\n" | grep .mp3 | xargs vlc
 	else
 		if [[ $@ == list ]]; then
-			command ls -AldQ /hdd/mosder/music/*/ | grep -v ^downloadLinkFiles/$ | awk -F'"' '{print $2}' | awk -F'/' '{print $5}'
+			command ls -AldQ $HOME/music/*/ | grep -v ^downloadLinkFiles/$ | awk -F'"' '{print $2}' | awk -F'/' '{print $5}'
 		elif [[ $@ == metal ]]; then
-			music alestorm dickinson dżem fighters ghost gloryhammer maiden kult lindemann littlev grubasa metallica nanowar powerwolf rammstein peppers sabaton samurai lawder accept/ sevenfold pestilence purple/ emigrate iggy asgard queen rainbow
+			music alestorm dickinson dżem fighters ghost gloryhammer maiden kult lindemann littlev grubasa metallica nanowar powerwolf rammstein peppers sabaton samurai lawder accept/ sevenfold pestilence purple/ emigrate iggy asgard queen/ rainbow
 		else
 			rx="\($1"
 			for regexp in "${@:2}"
@@ -60,7 +57,9 @@ music() {
 				rx="$rx\|$regexp"
 			done
 			rx="$rx\)"
-			command find /hdd/mosder/music -printf "\"%p\"\n" | grep -i "$rx.*\.mp3\"$" | xargs vlc
+			command find $HOME/music -printf "\"%p\"\n" | grep -i "$rx.*\.mp3\"$" | xargs vlc
         fi
 	fi
 }
+
+export PATH="$PATH:/home/mosder/.bin:/home/mosder/.local/bin"
