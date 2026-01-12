@@ -1,0 +1,3 @@
+[server]
+top_margin = 0.93
+playerctl_format = "{title}"
