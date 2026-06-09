@@ -42,4 +42,4 @@ resizeVideo() {
 	fi
 }
 
-export PATH="$PATH:/home/mosder/.bin"
+export PATH="$PATH:/home/mosder/.bin:/home/mosder/.local/bin:/usr/bin"

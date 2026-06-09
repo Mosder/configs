@@ -13,7 +13,7 @@ alias rfm='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; 
 alias lobbycode='clip ~/.local/share/Steam/steamapps/common/PAYDAY\ 2/lobby_code'
 
 # yaptide
-alias yap='~/yap/start.sh'
+alias yap='~/projects/yap/start.sh'
 
 restart() {
 	wezterm &
@@ -50,6 +50,10 @@ music() {
 			command ls -AldQ $HOME/music/*/ | grep -v ^downloadLinkFiles/$ | awk -F'"' '{print $2}' | awk -F'/' '{print $5}'
 		elif [[ $@ == metal ]]; then
 			music alestorm dickinson dżem fighters ghost gloryhammer maiden kult lindemann littlev grubasa metallica nanowar powerwolf rammstein peppers sabaton samurai lawder accept/ sevenfold pestilence purple/ emigrate iggy asgard queen/ rainbow
+		elif [[ $@ == payday ]]; then
+			music Norén/ Coutinho/ Vania/ Viklund/
+		elif [[ $@ == eurobeat ]]; then
+			music Ace/ Annerley/ STANTON/ ROGERS/ SIMON/ Dejo/ Love/ Dusty/ Boys/ Elisa/ Fastway/ Go2/ Jager/ Blast/ Cherry/ Parrish/ GRANT/ MANUEL/ Polo/ MAN/ B./ GROOVE/ Nathalie/ Niko/ NUAGE/ OVERLOAD/ Priscilla/ Sara/ SOPHIE/ SYMBOL/ MARS/ Vale/ VICTORIA/ WAIN
 		else
 			rx="\($1"
 			for regexp in "${@:2}"
@@ -62,4 +66,4 @@ music() {
 	fi
 }
 
-export PATH="$PATH:/home/mosder/.bin:/home/mosder/.local/bin"
+export PATH="$PATH:/home/mosder/.bin:/home/mosder/.local/bin:/usr/bin"
