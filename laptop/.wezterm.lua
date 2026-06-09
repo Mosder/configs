@@ -1,4 +1,4 @@
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
 local cfg = wezterm.config_builder()
 
 -- Miscellaneous
@@ -22,7 +22,7 @@ cfg.color_scheme = "Pro"
 cfg.colors = {
 	cursor_bg = "#fff",
 	cursor_fg = "#000",
-	cursor_border = "#999"
+	cursor_border = "#999",
 }
 
 -- Tab bar
@@ -30,15 +30,11 @@ cfg.hide_tab_bar_if_only_one_tab = true
 cfg.show_close_tab_button_in_tabs = false
 cfg.show_new_tab_button_in_tab_bar = false
 cfg.show_tab_index_in_tab_bar = false
-wezterm.on(
-	'format-tab-title',
-	function(tab, tabs, panes, config, hover, max_width)
-		local title = tab.active_pane.title
-		local part_to_remove = "mosder@archtop:"
-		return string.gsub(title, part_to_remove, "")
-	end
-)
-
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = tab.active_pane.title
+	local part_to_remove = "mosder@archtop:"
+	return string.gsub(title, part_to_remove, "")
+end)
 
 -- Window
 cfg.window_background_opacity = 0.95
@@ -47,13 +43,13 @@ cfg.window_frame = {
 	-- to the area above the tabs themselves, so it's 1 for now
 	active_titlebar_bg = "rgba(40,44,52,1)",
 	inactive_titlebar_bg = "rgba(40,44,52,1)",
-	font_size = 11
+	font_size = 11,
 }
 cfg.window_padding = {
-  left = 5,
-  right = 5,
-  top = 2,
-  bottom = 2,
+	left = 5,
+	right = 5,
+	top = 2,
+	bottom = 2,
 }
 
 -- Key bindings
@@ -62,124 +58,124 @@ cfg.disable_default_key_bindings = true
 cfg.keys = {
 	-- Delete last word (Remap ALT+Backspace to CTRL+Backspace)
 	{
-		mods = 'CTRL',
-		key = 'Backspace',
-		action = act.SendKey { mods = 'ALT', key = 'Backspace' }
+		mods = "CTRL",
+		key = "Backspace",
+		action = act.SendKey({ mods = "ALT", key = "Backspace" }),
 	},
 	-- Copy mode
 	{
-		mods = 'CTRL|SHIFT',
-		key = 'X',
-		action = act.ActivateCopyMode
+		mods = "CTRL|SHIFT",
+		key = "X",
+		action = act.ActivateCopyMode,
 	},
 	-- Change tabs - relative
 	{
-		mods = 'CTRL',
-		key = 'Tab',
-		action = act.ActivateTabRelative(1)
+		mods = "CTRL",
+		key = "Tab",
+		action = act.ActivateTabRelative(1),
 	},
 	{
-		mods = 'CTRL|SHIFT',
-		key = 'Tab',
-		action = act.ActivateTabRelative(-1)
+		mods = "CTRL|SHIFT",
+		key = "Tab",
+		action = act.ActivateTabRelative(-1),
 	},
 	-- Unicode menu
 	{
-		mods = 'CTRL',
-		key = 'u',
-		action = act.CharSelect
+		mods = "CTRL",
+		key = "u",
+		action = act.CharSelect,
 	},
 	-- Close current tab
 	{
-		mods = 'CTRL',
-		key = 'w',
-		action = act.CloseCurrentTab { confirm = true }
+		mods = "CTRL",
+		key = "w",
+		action = act.CloseCurrentTab({ confirm = true }),
 	},
 	{
-		mods = 'CTRL',
-		key = 'q',
-		action = act.CloseCurrentTab { confirm = true }
+		mods = "CTRL",
+		key = "q",
+		action = act.CloseCurrentTab({ confirm = true }),
 	},
 	-- Copy selection to clipboard
 	{
-		mods = 'CTRL|SHIFT',
-		key = 'c',
-		action = act.CopyTo 'Clipboard'
+		mods = "CTRL|SHIFT",
+		key = "c",
+		action = act.CopyTo("Clipboard"),
 	},
 	-- Decrease font size
 	{
-		mods = 'CTRL',
-		key = '-',
-		action = act.DecreaseFontSize
+		mods = "CTRL",
+		key = "-",
+		action = act.DecreaseFontSize,
 	},
 	-- Increase font size
 	{
-		mods = 'CTRL',
-		key = '=',
-		action = act.IncreaseFontSize
+		mods = "CTRL",
+		key = "=",
+		action = act.IncreaseFontSize,
 	},
 	-- Move tabs - relative
 	{
-		mods = 'CTRL|SHIFT',
-		key = 'LeftArrow',
-		action = act.MoveTabRelative(-1)
+		mods = "CTRL|SHIFT",
+		key = "LeftArrow",
+		action = act.MoveTabRelative(-1),
 	},
 	{
-		mods = 'CTRL|SHIFT',
-		key = 'RightArrow',
-		action = act.MoveTabRelative(1)
+		mods = "CTRL|SHIFT",
+		key = "RightArrow",
+		action = act.MoveTabRelative(1),
 	},
 	-- Pase from clipboard
 	{
-		mods = 'CTRL|SHIFT',
-		key = 'v',
-		action = act.PasteFrom 'Clipboard'
+		mods = "CTRL|SHIFT",
+		key = "v",
+		action = act.PasteFrom("Clipboard"),
 	},
 	{
-		mods = 'SHIFT',
-		key = 'Insert',
-		action = act.PasteFrom 'Clipboard'
+		mods = "SHIFT",
+		key = "Insert",
+		action = act.PasteFrom("Clipboard"),
 	},
 	-- Reset font size
 	{
-		mods = 'CTRL',
-		key = 'p',
-		action = act.ResetFontSize
+		mods = "CTRL",
+		key = "p",
+		action = act.ResetFontSize,
 	},
 	-- Search
 	{
-		mods = 'CTRL',
-		key = 'f',
-		action = act.Search('CurrentSelectionOrEmptyString')
+		mods = "CTRL",
+		key = "f",
+		action = act.Search("CurrentSelectionOrEmptyString"),
 	},
 	-- Debug
 	{
-		mods = 'CTRL',
-		key = 'd',
-		action = act.ShowDebugOverlay
+		mods = "CTRL",
+		key = "d",
+		action = act.ShowDebugOverlay,
 	},
 	-- New tab
 	{
-		mods = 'CTRL',
-		key = 't',
-		action = act.SpawnTab 'CurrentPaneDomain'
-	}
+		mods = "CTRL",
+		key = "t",
+		action = act.SpawnTab("CurrentPaneDomain"),
+	},
 }
 -- Change tabs
 for i = 0, 9 do
 	table.insert(cfg.keys, {
-		mods = 'CTRL',
+		mods = "CTRL",
 		key = tostring(i),
-		action = act.ActivateTab(i - 1)
+		action = act.ActivateTab(i - 1),
 	})
 end
 -- Move tabs (no support for -1, so a script instead)
-local special_characters = {'!', '@', '#', '$', '%', '^', '&', '*', '('}
+local special_characters = { "!", "@", "#", "$", "%", "^", "&", "*", "(" }
 for i = 1, 9 do
 	table.insert(cfg.keys, {
-		mods = 'CTRL|SHIFT',
+		mods = "CTRL|SHIFT",
 		key = special_characters[i],
-		action = act.MoveTab(i - 1)
+		action = act.MoveTab(i - 1),
 	})
 end
 wezterm.on("move-tab-to-last-spot", function(window, pane)
@@ -187,9 +183,9 @@ wezterm.on("move-tab-to-last-spot", function(window, pane)
 	window:perform_action(act.MoveTab(#tabs - 1), pane)
 end)
 table.insert(cfg.keys, {
-	mods = 'CTRL|SHIFT',
-	key = ')',
-	action = act.EmitEvent 'move-tab-to-last-spot'
+	mods = "CTRL|SHIFT",
+	key = ")",
+	action = act.EmitEvent("move-tab-to-last-spot"),
 })
 
 return cfg

@@ -61,7 +61,7 @@
     },
     "clock": {
         "format": "{:%Y-%m-%d  %H:%M (%Z)}",
-		"tooltip-format": "<b>{tz_list}</b><tt><small>{calendar}</small></tt>",
+		"tooltip-format": "<b>{tz_list}</b>\n<tt><small>{calendar}</small></tt>",
 		"timezones": [
 			"Europe/Warsaw",
 			"Etc/UTC",

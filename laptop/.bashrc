@@ -12,7 +12,7 @@ alias grepfind='sudo find / | grep'
 alias rfm='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 # yaptide
-alias yap='~/yap/start.sh'
+alias yap='~/projects/yap/start.sh'
 
 restart() {
 	wezterm &
