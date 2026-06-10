@@ -1,0 +1,70 @@
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='\[\e[0;35m\][\u@\h \W]\$\[\e[0m\] '
+
+alias sudo='sudo '
+alias vim='nvim'
+alias bashcfg='vim ~/.bashrc'
+alias hyprcfg='vim ~/.config/hypr/hyprland.conf'
+alias die='shutdown -h 0'
+alias grepfind='sudo find / | grep'
+alias rfm='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias lobbycode='clip ~/.local/share/Steam/steamapps/common/PAYDAY\ 2/lobby_code'
+
+# yaptide
+alias yap='~/projects/yap/start.sh'
+
+restart() {
+	wezterm &
+	exit
+}
+clip() {
+	wl-copy < "$@"
+}
+open(){
+	for file in "$@"
+	do
+		xdg-open "$file"
+	done
+}
+resizeVideo() {
+	if [[ $# != 3 ]]; then
+		echo "Usage: resizeVideo <input-file> <output-file> <size-in-MiB>"
+	else
+		inputFile=$1
+		outputFile=$2
+		sizeInMiB=$3
+		videoLength=$(ffprobe -i $inputFile -show_entries format=duration -v quiet -of csv="p=0")
+		bitrateInkb=$(echo "$sizeInMiB*8300/$videoLength" | bc)
+		ffmpeg -y -i $inputFile -c:v libx264 -b:v ${bitrateInkb}k -pass 1 -an -f null /dev/null && \
+		ffmpeg -i $inputFile -c:v libx264 -b:v ${bitrateInkb}k -pass 2 -c:a aac -b:a 128k $outputFile
+		rm ffmpeg2pass-0.log ffmpeg2pass-0.log.mbtree
+	fi
+}
+music() {
+	if [[ $# == 0 ]]; then
+		command find $HOME/music -printf "\"%p\"\n" | grep .mp3 | xargs vlc
+	else
+		if [[ $@ == list ]]; then
+			command ls -AldQ $HOME/music/*/ | grep -v ^downloadLinkFiles/$ | awk -F'"' '{print $2}' | awk -F'/' '{print $5}'
+		elif [[ $@ == metal ]]; then
+			music alestorm dickinson dżem fighters ghost gloryhammer maiden kult lindemann littlev grubasa metallica nanowar powerwolf rammstein peppers sabaton samurai lawder accept/ sevenfold pestilence purple/ emigrate iggy asgard queen/ rainbow
+		elif [[ $@ == payday ]]; then
+			music Norén/ Coutinho/ Vania/ Viklund/
+		elif [[ $@ == eurobeat ]]; then
+			music Ace/ Annerley/ STANTON/ ROGERS/ SIMON/ Dejo/ Love/ Dusty/ Boys/ Elisa/ Fastway/ Go2/ Jager/ Blast/ Cherry/ Parrish/ GRANT/ MANUEL/ Polo/ MAN/ B./ GROOVE/ Nathalie/ Niko/ NUAGE/ OVERLOAD/ Priscilla/ Sara/ SOPHIE/ SYMBOL/ MARS/ Vale/ VICTORIA/ WAIN
+		else
+			rx="\($1"
+			for regexp in "${@:2}"
+			do
+				rx="$rx\|$regexp"
+			done
+			rx="$rx\)"
+			command find $HOME/music -printf "\"%p\"\n" | grep -i "$rx.*\.mp3\"$" | xargs vlc
+        fi
+	fi
+}
+
+export PATH="$PATH:/home/mosder/.bin:/home/mosder/.local/bin:/usr/bin"

@@ -1,0 +1,29 @@
+# Indentation
+IndentWidth: 4
+ContinuationIndentWidth: 4
+UseTab: Never
+
+# Pointer alignment
+PointerAlignment: Right
+
+# Braces alignment
+SpaceBeforeParens: ControlStatements
+AlignAfterOpenBracket: BlockIndent
+AllowShortFunctionsOnASingleLine: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterCaseLabel: false
+    AfterControlStatement: Never
+    AfterEnum: false
+    AfterFunction: false
+    AfterNamespace: false
+    AfterStruct: false
+    AfterUnion: false
+    BeforeElse: true
+    BeforeWhile: false
+
+# Column limit
+ColumnLimit: 160
+
+# Max empty lines
+MaxEmptyLinesToKeep: 1
