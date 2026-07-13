@@ -23,6 +23,10 @@ BraceWrapping:
     BeforeElse: true
     BeforeWhile: false
 
+# Parameters and arguments alignment
+BinPackParameters: false
+BinPackArguments: false
+
 # Column limit
 ColumnLimit: 160
 
