@@ -14,6 +14,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 make_dir() {
     local dir="$1"
+    if [ -d "$dir" ]; then
+        return 1
+    fi
     echo "mkdir -p $dir"
     if ! mkdir -p "$dir" 2>/dev/null; then
         echo "Failed - using sudo..."
@@ -24,7 +27,17 @@ make_dir() {
 copy_file() {
     local src="$1"
     local dest="$2"
-    echo "cp -a $src $dest"
+
+    if [ -f "$dest" ]; then
+        if diff "$src" "$dest" &> /dev/null; then
+            return 1
+        else
+            echo "Updating $dest..."
+        fi
+    else
+        echo "$dest doesn't exist - copying..."
+    fi
+
     if ! cp -a "$src" "$dest" 2>/dev/null; then
         echo "Failed - using sudo..."
         sudo cp -a "$src" "$dest"

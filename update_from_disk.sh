@@ -15,10 +15,13 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 copy_file() {
     local src="$1"
     local dest="$2"
-    echo "cp -a $src $dest"
-    if ! cp -a "$src" "$dest" 2>/dev/null; then
-        echo "Failed - using sudo..."
-        sudo cp -a "$src" "$dest"
+    # update only if files are different
+    if ! diff "$src" "$dest" &>/dev/null; then
+        echo "Updating $dest..."
+        if ! cp -a "$src" "$dest" 2>/dev/null; then
+            echo "Failed - using sudo..."
+            sudo cp -a "$src" "$dest"
+        fi
     fi
 }
 
