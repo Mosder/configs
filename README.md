@@ -4,6 +4,15 @@ My config files for both my desktop PC and laptop.
 
 ## Usage
 
+To install packages use:
+
+```./install_packages.sh```
+
+It will install packages listed in the `packages` directory.  
+It will also upgrade the system and install the `yay` wrapper for AUR.
+
+---
+
 To load the config on your device you can use:
 
 ```./load_config.sh (desktop | laptop)```
