@@ -30,6 +30,9 @@ do
   vim.o.softtabstop = -1
   vim.o.expandtab = true
 
+  -- Allow selecting past line end in virtual block mode
+  vim.o.virtualedit = 'block'
+
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
 
