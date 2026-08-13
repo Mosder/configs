@@ -24,3 +24,4 @@ diffview.setup {
 vim.keymap.set('n', '<leader>dc', diffview.open, { desc = '[D]iff [C]urrent' })
 vim.keymap.set('n', '<leader>dh', diffview.file_history, { desc = '[D]iff [H]istory' })
 vim.keymap.set('n', '<leader>dq', diffview.close, { desc = '[D]iff [Q]uit' })
+vim.keymap.set('n', '<leader>db', function() diffview.open { 'origin/HEAD...HEAD' } end, { desc = '[D]iff [B]ranch' })
