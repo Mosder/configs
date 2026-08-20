@@ -1,0 +1,1 @@
+-- Laptop specific window/workspace rules

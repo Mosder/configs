@@ -26,6 +26,3 @@ To update the config with the files from your device you can use:
 ```./update_from_disk.sh (desktop | laptop)```
 
 It will update the files in the repo with the ones from your pc.
-
-## TODO
-- Update hyprland.conf and its sources to LUA
