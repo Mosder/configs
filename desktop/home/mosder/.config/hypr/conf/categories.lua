@@ -1,5 +1,5 @@
-hl.config({
-    input = {
-        sensitivity = -0.2,
-    },
-})
+hl.config {
+  input = {
+    sensitivity = -0.2,
+  },
+}
