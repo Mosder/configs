@@ -12,7 +12,8 @@
             "4": "  ",
             "5": "  ",
             "default": ""
-        }
+        },
+        "tooltip": false
     },
     "hyprland/window": {
         "max-length": 50
