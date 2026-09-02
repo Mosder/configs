@@ -1,5 +1,5 @@
 [user]
-	email = mail@mosder.eu
+	email = git@mosder.eu
 	name = Mosder
 [pull]
 	rebase = false
