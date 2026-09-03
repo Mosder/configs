@@ -45,7 +45,7 @@ resizeVideo() {
 }
 music() {
 	if [[ $# == 0 ]]; then
-		command find $HOME/music -printf "\"%p\"\n" | grep .mp3 | xargs vlc
+		command find /nfs/music -printf "\"%p\"\n" | grep .mp3 | xargs vlc
 	else
 		if [[ $@ == list ]]; then
 			command ls -AldQ $HOME/music/*/ | grep -v ^downloadLinkFiles/$ | awk -F'"' '{print $2}' | awk -F'/' '{print $5}'
@@ -62,7 +62,7 @@ music() {
 				rx="$rx\|$regexp"
 			done
 			rx="$rx\)"
-			command find $HOME/music -printf "\"%p\"\n" | grep -i "$rx.*\.mp3\"$" | xargs vlc
+			command find /nfs/music -printf "\"%p\"\n" | grep -i "$rx.*\.mp3\"$" | xargs vlc
         fi
 	fi
 }
