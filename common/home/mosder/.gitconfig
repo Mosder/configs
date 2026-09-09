@@ -3,3 +3,5 @@
 	name = Mosder
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main

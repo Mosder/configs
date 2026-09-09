@@ -36,6 +36,9 @@ do
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
 
+  -- Enable incrementation of letters
+  vim.o.nrformats = 'alpha,hex,bin'
+
   -- Don't show the mode, since it's already in the status line
   vim.o.showmode = false
 
