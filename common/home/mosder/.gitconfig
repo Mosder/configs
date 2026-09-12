@@ -2,6 +2,6 @@
 	email = git@mosder.eu
 	name = Mosder
 [pull]
-	rebase = false
+	rebase = true
 [init]
 	defaultBranch = main
