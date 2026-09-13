@@ -6,4 +6,5 @@ hl.on('hyprland.start', function()
 
   -- Programs
   hl.dispatch(hl.dsp.exec_cmd(vars.steam, { workspace = '5 silent' }))
+  hl.dispatch(hl.dsp.exec_cmd(vars.torrent, { workspace = '10 silent' }))
 end)

@@ -24,4 +24,5 @@ return {
   notification_daemon = 'dunst',
   color_picker = 'hyprpicker',
   screenshot = 'hyprshot',
+  torrent = 'qbittorrent',
 }
