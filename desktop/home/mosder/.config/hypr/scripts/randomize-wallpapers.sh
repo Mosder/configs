@@ -1,16 +1,15 @@
 #!/usr/bin/bash
 
-WALLPAPER_DIR_2K="$HOME/wallpapers/2k"
-WALLPAPER_DIR_HD="$HOME/wallpapers/hd"
+WALLPAPER_DIR="$HOME/wallpapers"
 
 # Get random wallpapers
-WALLPAPER_2K=$(find $WALLPAPER_DIR_2K -type f | shuf -n 1)
-WALLPAPER_HD=$(find $WALLPAPER_DIR_HD -type f | shuf -n 1)
+WALLPAPER_MAIN=$(find $WALLPAPER_DIR -type f | shuf -n 1)
+WALLPAPER_SECOND=$(find $WALLPAPER_DIR -type f | shuf -n 1)
 
 # Create symlinks to new random wallpapers
-SYMLINK_2K=$WALLPAPER_DIR_2K/.current
-SYMLINK_HD=$WALLPAPER_DIR_HD/.current
-rm $SYMLINK_2K
-rm $SYMLINK_HD
-ln -s $WALLPAPER_2K $SYMLINK_2K
-ln -s $WALLPAPER_HD $SYMLINK_HD
+SYMLINK_MAIN=$WALLPAPER_DIR/.current_main
+SYMLINK_SECOND=$WALLPAPER_DIR/.current_second
+rm $SYMLINK_MAIN
+rm $SYMLINK_SECOND
+ln -s $WALLPAPER_MAIN $SYMLINK_MAIN
+ln -s $WALLPAPER_SECOND $SYMLINK_SECOND
