@@ -28,7 +28,7 @@ BinPackParameters: false
 BinPackArguments: false
 
 # Column limit
-ColumnLimit: 160
+ColumnLimit: 100
 
 # Max empty lines
 MaxEmptyLinesToKeep: 1
