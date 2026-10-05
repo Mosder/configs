@@ -10,7 +10,7 @@ alias bashcfg='vim ~/.bashrc'
 alias hyprcfg='vim ~/.config/hypr/hyprland.lua'
 alias die='shutdown -h 0'
 alias grepfind='sudo find / | grep'
-alias rfm='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias rfm='ranger'
 alias lobbycode='clip ~/.local/share/Steam/steamapps/common/PAYDAY\ 2/lobby_code'
 
 # yaptide
