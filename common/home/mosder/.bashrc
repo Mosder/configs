@@ -56,5 +56,41 @@ music() {
         find /nfs/music -printf "\"%p\"\n" | grep -i "$rx.*\.opus\"$" | xargs vlc
     fi
 }
+reenc() {
+    res="\nRESULT:"
+    for f in "$@"; do
+        ext=$(echo "$f" | awk -F. '{print $NF}' | tr A-Z a-z)
+        len=${#ext}
+        res+="\n$f "
+        if [[ "$f" == "$ext" ]]; then
+            res+="- couldn't determine extension"
+        else
+            case $ext in
+                jpeg | jpg | png | webp | avif)
+                    out=${f::-$len}avif
+                    ffmpeg -i "$f" "tmp-$out"
+                    mv "tmp-$out" "$out"
+                    res+="-> $out"
+                    ;;
+                mp3 | webm | flac | wav | opus)
+                    out=${f::-$len}opus
+                    ffmpeg -i "$f" "tmp-$out"
+                    mv "tmp-$out" "$out"
+                    res+="-> $out"
+                    ;;
+                mp4 | mkv | webm | avi)
+                    out=${f::-$len}mkv
+                    ffmpeg -i "$f" -c:v libsvtav1 -c:a libopus "tmp-$out"
+                    mv "tmp-$out" "$out"
+                    res+="-> $out"
+                    ;;
+                *)
+                    res+="- not supported extension"
+                    ;;
+            esac
+        fi
+    done
+    printf "$res"
+}
 
 export PATH="$PATH:/home/mosder/.bin:/home/mosder/.local/bin:/usr/bin"
