@@ -471,7 +471,7 @@ do
   vim.keymap.set(
     'n',
     '<leader>sm',
-    function() builtin.man_pages { sections = { '0p', '1', '2', '3', '3p', '3pcap', '3type', '5' } } end,
+    function() builtin.man_pages { sections = { '0p', '1', '1p', '2', '3', '3p', '3pcap', '3type', '5' } } end,
     { desc = '[S]earch [M]anual' }
   )
   vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
